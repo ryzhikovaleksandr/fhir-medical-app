@@ -2,10 +2,17 @@
 
 (in-package #:fhir-medical-app)
 
+;;; Structure for the identifier (FHIR Identifier resource)
+(defstruct identifier
+    "Identifier structure according to FHIR Identifier resource"
+    (value "" :type string)
+    (system "" :type string)
+    (type nil :type (or null string)))
+
 ;;; Structure for the patient (FHIR Patient resource)
 (defstruct patient
     "Patient structure according to FHIR Patient resource"
-    (id nil :type (or null string))
+    (id nil :type (or null identifier))
     (name "" :type string)
     (birth-date nil :type (or null string))
     (gender nil :type (or null (member :male :female :other :unknown)))
